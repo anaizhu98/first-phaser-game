@@ -11,7 +11,7 @@ export class MainScene extends Phaser.Scene {
     }
 
     preload(): void {
-        this.load.image("bg", "assets/wintertileset/BG/BG.png");
+        this.load.image("bg", "/wintertileset/BG/BG.png");
         Player.preload(this);
     }
 
@@ -19,6 +19,6 @@ export class MainScene extends Phaser.Scene {
         this.backgroud = this.add.image(0, 0, "bg");
         this.backgroud.setOrigin(0, 0);
         this.player = new Player(this, 100, 300);
-        this.player.play("player_idle");
+        this.player.anims.play("player_idle");
     }
 }
