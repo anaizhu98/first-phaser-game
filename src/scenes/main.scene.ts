@@ -1,4 +1,5 @@
-import { Player } from "@/objects/player";
+import { Player } from "@/objects";
+import BG from "@assets/wintertileset/BG/BG.png";
 
 export class MainScene extends Phaser.Scene {
     backgroud!: Phaser.GameObjects.Image;
@@ -11,14 +12,14 @@ export class MainScene extends Phaser.Scene {
     }
 
     preload(): void {
-        this.load.image("bg", "/wintertileset/BG/BG.png");
+        this.load.image("bg", BG);
         Player.preload(this);
     }
 
     create(): void {
         this.backgroud = this.add.image(0, 0, "bg");
         this.backgroud.setOrigin(0, 0);
-        this.player = new Player(this, 100, 300);
+        this.player = new Player(this, 400, 300);
         this.player.anims.play("player_idle");
     }
 }

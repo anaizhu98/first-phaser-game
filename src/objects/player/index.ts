@@ -1,6 +1,11 @@
 export class Player extends Phaser.GameObjects.Sprite {
+    static texture: Phaser.Textures.Texture;
+
+    private health = 100;
+
     constructor(scene: Phaser.Scene, x: number, y: number) {
-        super(scene, x, y, "player", "Idle__001.png");
+        super(scene, x, y, Player.texture, "Idle__001.png");
+        this.setScale(0.5);
         this.loadAnimation(scene);
     }
 
@@ -21,6 +26,15 @@ export class Player extends Phaser.GameObjects.Sprite {
     }
 
     static preload(scene: Phaser.Scene): void {
-        scene.load.multiatlas("player", "/sprites/player.json", "/sprites/");
+        scene.load.multiatlas(
+            "player",
+            "/assets/sprites/player.json",
+            "/assets/sprites/"
+        );
+        this.texture = scene.textures.get("player");
+    }
+
+    getHealth(): number {
+        return this.health;
     }
 }
